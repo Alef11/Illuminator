@@ -1,0 +1,13 @@
+[package]
+name = "illuminator-render"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+illuminator-core.workspace = true
+egui.workspace = true
+glam.workspace = true
+tracing.workspace = true
+image.workspace = true

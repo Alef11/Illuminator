@@ -1,0 +1,60 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/illuminator-core",
+    "crates/illuminator-render",
+    "crates/illuminator-app",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.80"
+authors = ["Illuminator contributors"]
+license = "MIT OR Apache-2.0"
+repository = ""
+
+[workspace.dependencies]
+# UI
+eframe = { version = "0.29", default-features = false, features = ["default_fonts", "glow", "wgpu", "persistence"] }
+egui = "0.29"
+egui_extras = { version = "0.29", features = ["image"] }
+
+# Math / data
+glam = { version = "0.29", features = ["serde"] }
+slotmap = { version = "1.0", features = ["serde"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Errors / logging
+thiserror = "1"
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Dialogs
+rfd = "0.15"
+
+# Images
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "bmp", "webp"] }
+base64 = "0.22"
+
+# SVG
+usvg = { version = "0.47", default-features = false }
+xmlwriter = "0.1"
+log = "0.4"
+
+# Internal crates
+illuminator-core = { path = "crates/illuminator-core" }
+illuminator-render = { path = "crates/illuminator-render" }
+
+[profile.dev]
+opt-level = 1            # Slow debug builds are unbearable for graphics work
+[profile.dev.package."*"]
+opt-level = 3            # Optimize deps in dev for fast renders
+
+[profile.release]
+lto = "thin"
+codegen-units = 1

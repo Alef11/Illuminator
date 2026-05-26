@@ -1,0 +1,26 @@
+[package]
+name = "illuminator-app"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "illuminator"
+path = "src/main.rs"
+
+[dependencies]
+illuminator-core.workspace = true
+illuminator-render.workspace = true
+eframe.workspace = true
+egui.workspace = true
+egui_extras.workspace = true
+glam.workspace = true
+slotmap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+rfd.workspace = true
